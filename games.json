@@ -1,0 +1,22 @@
+{
+  "updated": "Beispieldaten",
+  "count": 16,
+  "games": [
+    { "title": "Forza Horizon 5", "year": 2021, "meta": 92, "user": 7.8, "mcUrl": "https://www.metacritic.com/game/forza-horizon-5/" },
+    { "title": "Hades", "year": 2020, "meta": 93, "user": 8.9, "mcUrl": "https://www.metacritic.com/game/hades/" },
+    { "title": "Hollow Knight", "year": 2017, "meta": 90, "user": 9.1, "mcUrl": "https://www.metacritic.com/game/hollow-knight/" },
+    { "title": "Starfield", "year": 2023, "meta": 83, "user": 6.4, "mcUrl": "https://www.metacritic.com/game/starfield/" },
+    { "title": "Sea of Thieves", "year": 2018, "meta": 69, "user": 6.7, "mcUrl": "https://www.metacritic.com/game/sea-of-thieves/" },
+    { "title": "Halo Infinite", "year": 2021, "meta": 87, "user": 5.6, "mcUrl": "https://www.metacritic.com/game/halo-infinite/" },
+    { "title": "Dead Cells", "year": 2018, "meta": 89, "user": 8.4, "mcUrl": "https://www.metacritic.com/game/dead-cells/" },
+    { "title": "Persona 5 Royal", "year": 2022, "meta": 94, "user": 8.7, "mcUrl": "https://www.metacritic.com/game/persona-5-royal/" },
+    { "title": "Lies of P", "year": 2023, "meta": 80, "user": 8.2, "mcUrl": "https://www.metacritic.com/game/lies-of-p/" },
+    { "title": "Stardew Valley", "year": 2016, "meta": 89, "user": 8.6, "mcUrl": "https://www.metacritic.com/game/stardew-valley/" },
+    { "title": "Senua's Saga: Hellblade II", "year": 2024, "meta": 81, "user": 5.9, "mcUrl": "https://www.metacritic.com/game/senuas-saga-hellblade-2/" },
+    { "title": "Doom Eternal", "year": 2020, "meta": 88, "user": 7.5, "mcUrl": "https://www.metacritic.com/game/doom-eternal/" },
+    { "title": "Yakuza: Like a Dragon", "year": 2020, "meta": 84, "user": 8.3, "mcUrl": "https://www.metacritic.com/game/yakuza-like-a-dragon/" },
+    { "title": "Pentiment", "year": 2022, "meta": 87, "user": 7.9, "mcUrl": "https://www.metacritic.com/game/pentiment/" },
+    { "title": "A Plague Tale: Requiem", "year": 2022, "meta": 82, "user": 8.0, "mcUrl": "https://www.metacritic.com/game/a-plague-tale-requiem/" },
+    { "title": "Grounded", "year": 2022, "meta": 81, "user": 7.7, "mcUrl": "https://www.metacritic.com/game/grounded/" }
+  ]
+}
