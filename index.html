@@ -42,19 +42,20 @@
   @media (max-width: 560px){ .count { margin-left: 0; width: 100%; } }
   .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   @media (max-width: 480px){ .grid { grid-template-columns: 1fr; } }
-  .card { background: linear-gradient(180deg, var(--bg-card), var(--bg-elev)); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; gap: 14px; align-items: flex-start; text-decoration: none; color: inherit; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; animation: rise .4s ease backwards; }
+  .card { background: linear-gradient(180deg, var(--bg-card), var(--bg-elev)); border: 1px solid var(--border); border-radius: 16px; padding: 16px; display: flex; gap: 14px; align-items: center; text-decoration: none; color: inherit; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; animation: rise .4s ease backwards; }
   .card:hover { transform: translateY(-3px); border-color: var(--accent-dim); box-shadow: var(--shadow); }
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
-  .cover { width: 60px; height: 80px; border-radius: 9px; flex-shrink: 0; background: linear-gradient(135deg, #1c2b22, #0e1611); display: grid; place-items: center; font-family: 'Chakra Petch'; font-weight: 700; font-size: 1.4rem; color: var(--accent-dim); border: 1px solid var(--border); }
+  .cover { width: 54px; height: 72px; border-radius: 9px; flex-shrink: 0; background: linear-gradient(135deg, #1c2b22, #0e1611); display: grid; place-items: center; font-family: 'Chakra Petch'; font-weight: 700; font-size: 1.3rem; color: var(--accent-dim); border: 1px solid var(--border); }
   .info { flex: 1; min-width: 0; }
-  .title { font-family: 'Chakra Petch'; font-weight: 600; font-size: 1.05rem; line-height: 1.2; }
+  .title { font-family: 'Chakra Petch'; font-weight: 600; font-size: 1.05rem; line-height: 1.25; }
   .meta { color: var(--text-dim); font-size: 0.8rem; margin-top: 3px; }
-  .scores { display: flex; gap: 8px; margin-top: 12px; }
-  .score { flex: 1; border-radius: 10px; padding: 8px 6px; text-align: center; border: 1px solid var(--border); background: rgba(0,0,0,0.2); }
-  .score .num { font-family: 'Chakra Petch'; font-weight: 700; font-size: 1.25rem; line-height: 1; }
-  .score .lbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-top: 4px; }
-  .num.good { color: var(--good); } .num.mid { color: var(--mid); } .num.bad { color: var(--bad); }
-  .num.na { color: var(--text-dim); opacity: .6; }
+  .badge { flex-shrink: 0; width: 62px; height: 62px; border-radius: 14px; display: grid; place-items: center; gap: 1px; border: 1.5px solid; background: rgba(0,0,0,0.25); }
+  .badge .n { font-family: 'Chakra Petch'; font-weight: 700; font-size: 1.5rem; line-height: 1; }
+  .badge .l { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+  .badge.good { border-color: rgba(108,255,138,0.5); } .badge.good .n { color: var(--good); }
+  .badge.mid  { border-color: rgba(255,210,63,0.5); }  .badge.mid .n  { color: var(--mid); }
+  .badge.bad  { border-color: rgba(255,93,93,0.5); }   .badge.bad .n  { color: var(--bad); }
+  .badge.na   { border-color: var(--border); }         .badge.na .n   { color: var(--text-dim); opacity:.6; }
   .empty { text-align: center; color: var(--text-dim); padding: 60px 20px; }
   footer { margin-top: 40px; color: var(--text-dim); font-size: 0.78rem; text-align: center; }
   footer a { color: var(--accent-dim); }
@@ -64,7 +65,7 @@
 <div class="wrap">
   <header>
     <div class="brand"><span class="dot"></span><h1>Game Pass <span class="x">×</span> Metacritic</h1></div>
-    <p class="subtitle">Alle Spiele im Xbox Game Pass – durchsuchbar und sortiert nach Metascore und User Score.</p>
+    <p class="subtitle">Alle Spiele im Xbox Game Pass – durchsuchbar und sortiert nach Metascore.</p>
     <span class="updated" id="updated"></span>
   </header>
 
@@ -76,8 +77,6 @@
     <select id="sort">
       <option value="meta-desc">Metascore ↓</option>
       <option value="meta-asc">Metascore ↑</option>
-      <option value="user-desc">User Score ↓</option>
-      <option value="user-asc">User Score ↑</option>
       <option value="name-asc">Name A–Z</option>
     </select>
     <span class="count" id="count"></span>
@@ -86,7 +85,7 @@
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">Keine Treffer.</div>
 
-  <footer>Daten: Xbox Game Pass &amp; Metacritic · Aktualisierung wöchentlich</footer>
+  <footer>Daten: Xbox Game Pass Master List &amp; Metacritic · Aktualisierung manuell</footer>
 </div>
 
 <script>
@@ -99,7 +98,6 @@ const sortEl = document.getElementById('sort');
 const updatedEl = document.getElementById('updated');
 
 const metaClass = v => v==null ? 'na' : v>=75 ? 'good' : v>=50 ? 'mid' : 'bad';
-const userClass = v => v==null ? 'na' : v>=7.5 ? 'good' : v>=5 ? 'mid' : 'bad';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 async function load(){
@@ -125,15 +123,15 @@ function render(){
   countEl.textContent = `${list.length} Spiele`;
   empty.style.display = list.length ? 'none' : 'block';
   grid.innerHTML = list.map((g,i)=>`
-    <a class="card" href="${esc(g.mcUrl||'#')}" target="_blank" rel="noopener" style="animation-delay:${Math.min(i*25,400)}ms">
+    <a class="card" href="${esc(g.mcUrl||'#')}" target="_blank" rel="noopener" style="animation-delay:${Math.min(i*20,400)}ms">
       <div class="cover">${esc(g.title[0]||'?')}</div>
       <div class="info">
         <div class="title">${esc(g.title)}</div>
         <div class="meta">${g.year ?? ''}</div>
-        <div class="scores">
-          <div class="score"><div class="num ${metaClass(g.meta)}">${g.meta ?? '–'}</div><div class="lbl">Metascore</div></div>
-          <div class="score"><div class="num ${userClass(g.user)}">${g.user!=null ? Number(g.user).toFixed(1) : '–'}</div><div class="lbl">User Score</div></div>
-        </div>
+      </div>
+      <div class="badge ${metaClass(g.meta)}">
+        <div class="n">${g.meta ?? '–'}</div>
+        <div class="l">Meta</div>
       </div>
     </a>`).join('');
 }
