@@ -1,7 +1,3 @@
 {
-  "_hinweis": "Hier korrigierst du Spiele, bei denen Metacritic nicht automatisch gefunden wurde. Loesche diese Zeile spaeter. Es gibt zwei Moeglichkeiten pro Spiel:",
-  "_beispiel_slug": "Wenn nur der Link-Name (Slug) falsch ist, gib den richtigen an:",
-  "Senua's Saga: Hellblade II": { "slug": "senuas-saga-hellblade-2" },
-  "_beispiel_feste_scores": "Wenn Scraping gar nicht klappt, trag die Zahlen direkt ein:",
-  "Beispielspiel XY": { "meta": 88, "user": 7.9, "url": "https://www.metacritic.com/game/beispielspiel-xy/" }
+  "Genauer Spieltitel": { "meta": 83, "user": 8.5 }
 }
